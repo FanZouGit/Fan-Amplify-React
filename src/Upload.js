@@ -1,35 +1,39 @@
 import React, { useState } from 'react';
-import { 
-  signIn, 
-  signOut, 
-  getCurrentUser, 
-  fetchAuthSession 
-} from 'aws-amplify/auth';
+import { fetchAuthSession } from 'aws-amplify/auth';
 
 export default function Upload() {
-	  const [file, setFile] = useState(null);
+  const [file, setFile] = useState(null);
 
-	  const handleUpload = async () => {
-		      const token = (await Auth.currentSession()).getIdToken().getJwtToken();
+  const handleUpload = async () => {
+    if (!file) return;
+    try {
+      const { tokens } = await fetchAuthSession();
+      const token = tokens?.idToken?.toString();
 
-		      const res = await fetch('<API_URL>/generate-presigned-url', {
-			            headers: { Authorization: token }
-			          });
-		      const { uploadUrl } = await res.json();
+      // TODO: Replace <API_URL> with your real endpoint
+      const res = await fetch('<API_URL>/generate-presigned-url', {
+        headers: { Authorization: token }
+      });
+      if (!res.ok) throw new Error('Failed to get presigned URL');
+      const { uploadUrl } = await res.json();
 
-		      await fetch(uploadUrl, {
-			            method: 'PUT',
-			            headers: { 'Content-Type': 'application/xml' },
-			            body: file
-			          });
+      const uploadRes = await fetch(uploadUrl, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/xml' },
+        body: file
+      });
+      if (!uploadRes.ok) throw new Error('Upload failed');
 
-		      alert('Upload successful!');
-		    };
+      alert('Upload successful!');
+    } catch (err) {
+      alert(`Upload error: ${err.message}`);
+    }
+  };
 
-	  return (
-		      <div>
-		        <input type="file" accept=".xml" onChange={e => setFile(e.target.files[0])} />
-		        <button onClick={handleUpload} disabled={!file}>Upload XML</button>
-		      </div>
-		    );
+  return (
+    <div>
+      <input type="file" accept=".xml" onChange={e => setFile(e.target.files[0])} />
+      <button onClick={handleUpload} disabled={!file}>Upload XML</button>
+    </div>
+  );
 }
