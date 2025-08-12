@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { fetchAuthSession } from 'aws-amplify/auth';
+import awsExports from './aws-exports';
+
+const apiUrl = awsExports.aws_cloud_logic_custom[0].endpoint;
 
 export default function Upload() {
   const [file, setFile] = useState(null);
@@ -10,8 +13,7 @@ export default function Upload() {
       const { tokens } = await fetchAuthSession();
       const token = tokens?.idToken?.toString();
 
-      // TODO: Replace <API_URL> with your real endpoint
-      const res = await fetch('<API_URL>/generate-presigned-url', {
+      const res = await fetch(`${apiUrl}/generate-presigned-url`, {
         headers: { Authorization: token }
       });
       if (!res.ok) throw new Error('Failed to get presigned URL');
