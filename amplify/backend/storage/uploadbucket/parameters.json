@@ -1,0 +1,30 @@
+{
+  "bucketName": "fanamplifyreact-uploads",
+  "authPolicyName": "s3_amplify_auth_policy",
+  "unauthPolicyName": "s3_amplify_unauth_policy",
+  "authRoleName": {
+    "Ref": "AuthRoleName"
+  },
+  "unauthRoleName": {
+    "Ref": "UnauthRoleName"
+  },
+  "selectedGuestPermissions": [],
+  "selectedAuthenticatedPermissions": [
+    "s3:PutObject",
+    "s3:GetObject",
+    "s3:DeleteObject"
+  ],
+  "s3PermissionsAuthenticatedPublic": "DISALLOW",
+  "s3PermissionsAuthenticatedProtected": "DISALLOW",
+  "s3PermissionsAuthenticatedPrivate": "DISALLOW",
+  "s3PermissionsAuthenticatedUploads": "DISALLOW",
+  "s3PermissionsGuestPublic": "DISALLOW",
+  "s3PermissionsGuestProtected": "DISALLOW",
+  "s3PermissionsGuestPrivate": "DISALLOW",
+  "s3PermissionsGuestUploads": "DISALLOW",
+  "AuthenticatedAllowList": "ALLOW",
+  "GuestAllowList": "DISALLOW",
+  "s3ReadPolicy": "ALLOW",
+  "s3UploadPolicy": "ALLOW",
+  "s3DeletePolicy": "ALLOW"
+}

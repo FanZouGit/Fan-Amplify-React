@@ -1,0 +1,5 @@
+{
+  "CloudWatchRule": "NONE",
+  "deploymentBucketName": "amplify-fanamplifyreact-dev-79271-deployment",
+  "s3Key": "amplify-builds/uploadFunction-latest-build.zip"
+}

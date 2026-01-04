@@ -1,0 +1,7 @@
+{
+  "version": 1,
+  "resourceName": "uploadFunction",
+  "runtime": "nodejs18.x",
+  "timeout": 25,
+  "memorySize": 256
+}

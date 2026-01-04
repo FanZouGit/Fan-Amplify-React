@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/generate-presigned-url": {
+      "name": "/generate-presigned-url",
+      "lambdaFunction": "uploadFunction",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}
