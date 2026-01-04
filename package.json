@@ -1,6 +1,7 @@
 {
   "name": "amplify-upload-app",
   "version": "1.0.0",
+  "description": "React application with AWS Amplify for secure file uploads",
   "dependencies": {
     "@aws-amplify/ui-react": "^6.11.2",
     "aws-amplify": "^6.15.4",
@@ -12,7 +13,13 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "verify": "bash verify-setup.sh",
+    "amplify:init": "amplify init",
+    "amplify:push": "amplify push",
+    "amplify:publish": "amplify publish",
+    "amplify:status": "amplify status",
+    "amplify:console": "amplify console"
   },
   "browserslist": {
     "production": [
@@ -25,5 +32,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app"
+    ]
   }
 }
+
