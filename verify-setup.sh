@@ -2,6 +2,7 @@
 
 # Setup Verification Script for AWS Amplify React Upload App
 # This script checks if all prerequisites are met before deployment
+# Note: Does NOT use 'set -e' so all checks run even if some fail
 
 echo "🔍 Checking AWS Amplify React Upload App Prerequisites..."
 echo ""

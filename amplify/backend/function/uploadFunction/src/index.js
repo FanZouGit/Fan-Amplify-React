@@ -2,7 +2,7 @@ const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3');
 const { getSignedUrl } = require('@aws-sdk/s3-request-presigner');
 
 const BUCKET_NAME = process.env.STORAGE_BUCKET_NAME || 'your-upload-bucket-name';
-const REGION = process.env.AWS_REGION || 'us-east-1';
+const REGION = process.env.REGION || 'us-east-1';
 
 const s3Client = new S3Client({ region: REGION });
 
